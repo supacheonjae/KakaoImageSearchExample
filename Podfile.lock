@@ -1,0 +1,46 @@
+PODS:
+  - ObjectMapper (3.5.1)
+  - Realm (3.17.1):
+    - Realm/Headers (= 3.17.1)
+  - Realm/Headers (3.17.1)
+  - RealmSwift (3.17.1):
+    - Realm (= 3.17.1)
+  - RxCocoa (5.0.0):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRealm (1.0.0):
+    - RealmSwift (~> 3.14)
+    - RxSwift (~> 5.0)
+  - RxRelay (5.0.0):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.0)
+
+DEPENDENCIES:
+  - ObjectMapper
+  - RealmSwift
+  - RxCocoa
+  - RxRealm
+  - RxSwift
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ObjectMapper
+    - Realm
+    - RealmSwift
+    - RxCocoa
+    - RxRealm
+    - RxRelay
+    - RxSwift
+
+SPEC CHECKSUMS:
+  ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
+  Realm: c204f1a890f07dea43b14132a6aad118c054b8f2
+  RealmSwift: 4d3c9233544b9cd08a8913e0872b9038eb99b054
+  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
+  RxRealm: 1e81dcfca1fb50c3e9b3e1f8102bc875c5156a2e
+  RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
+  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+
+PODFILE CHECKSUM: 973febb76851daa4c926b0d7d0d86678bf021c6b
+
+COCOAPODS: 1.6.1

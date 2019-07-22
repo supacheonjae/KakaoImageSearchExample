@@ -1,0 +1,6 @@
+framework module Pods_genius_hayunUITests {
+  umbrella header "Pods-genius-hayunUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
