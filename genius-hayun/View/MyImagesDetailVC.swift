@@ -18,20 +18,20 @@ class MyImagesDetailVC: ViewController {
     @IBOutlet weak var btn_nextPage: UIButton!
     
     /// 현재 페이지에 대한 값
-    var rx_currentPage = BehaviorRelay<Int>(value: 0)
+    private let rx_currentPage = BehaviorRelay<Int>(value: 0)
     /// 페이지 뷰 컨트롤러의 아이템들이 될 녀석들
-    var rx_items = BehaviorRelay<[ImageInfo]>(value: [])
+    let rx_items = BehaviorRelay<[ImageInfo]>(value: [])
     
     /// 이미지를 앨범으로 보내는 뷰 모델
     private var myImageDetailVM: MyImageDetailVM?
     /// 앨범에 이미지 저장 요청 서브젝트
-    private var rx_sendAlbum = PublishSubject<ImageInfo>()
+    private let rx_sendAlbum = PublishSubject<ImageInfo>()
     
     /// 이동할 페이지
     var willMoveIdx = 0
     
     /// 스크롤 이동 용도
-    var rx_collectionViewIdx = PublishSubject<Int>()
+    let rx_collectionViewIdx = PublishSubject<Int>()
     
     deinit {
         Log.d(output: "소멸")

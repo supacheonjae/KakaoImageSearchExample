@@ -17,25 +17,25 @@ class DetailPageVC: UIPageViewController,  UIPageViewControllerDataSource {
     /// Rx기반의 UIPageViewControllerDataSource를 구현하지 못했으므로 동기적인 작업에 사용할 DataSoruce 선언
     private var imageList: [ImageInfo] = []
     
-    var rx_imageList = BehaviorRelay<[ImageInfo]>(value: [])
+    let rx_imageList = BehaviorRelay<[ImageInfo]>(value: [])
     
     /// 현재 보여지는 페이지의 인덱스 값을 발행하는 목적
-    var rx_currentPage = BehaviorSubject<Int>(value: 0)
+    let rx_currentPage = BehaviorSubject<Int>(value: 0)
     
     /// 이 화면이 보여질 때 첫 페이지를 선택하는 Subject
-    var rx_willMovePageIndex = BehaviorSubject<Int>(value: 0)
+    let rx_willMovePageIndex = BehaviorSubject<Int>(value: 0)
     
     
     // 이전, 다음 페이지 버튼 연동을 위한 rx
     /// 이전 페이지 이동을 위한 Subject
     ///
     /// 외부에서 이전 페이지로 이동을 원할 때 이 Subject를 활용하세요.
-    var rx_prev = PublishSubject<Void>()
+    let rx_prev = PublishSubject<Void>()
     
     /// 다음 페이지 이동을 위한 Subject
     ///
     /// 외부에서 다음 페이지로 이동을 원할 때 이 Subject를 활용하세요.
-    var rx_next = PublishSubject<Void>()
+    let rx_next = PublishSubject<Void>()
     
     deinit {
         Log.d(output: "소멸")
@@ -58,20 +58,7 @@ class DetailPageVC: UIPageViewController,  UIPageViewControllerDataSource {
         rx_imageList
             .withLatestFrom(comb_listAndPageIdx)
             .subscribe(onNext: { [unowned self] imageList, idx in
-                
                 self.imageList = imageList
-                
-                guard self.imageList.count > 0 else {
-                    return
-                }
-                
-                let viewControllers = [self.viewControllerAtIndex(index: idx)]
-                
-                self.setViewControllers(
-                    viewControllers as? [UIViewController],
-                    direction: .reverse,
-                    animated: false,
-                    completion: nil)
             })
             .disposed(by: disposeBag)
         

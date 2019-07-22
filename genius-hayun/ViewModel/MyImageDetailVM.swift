@@ -10,18 +10,19 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+/// '내 보관함'의 이미지를 앨범으로 보내는 역할을 담당하는 ViewModel
 class MyImageDetailVM: NSObject {
     
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     
     /// 앨범에 저장 요청 옵저버블
     private var rx_sendAlbum: Observable<ImageInfo>
     
-    /// 앨범에 저장 시도 후 결과를 방출하는 드라이버
+    /// 앨범에 저장 시도 후 결과를 방출하는 Driver
     lazy var rx_result = self.sendAlbum()
     
-    /// 결과 알림용
-    let rx_completion = PublishSubject<SendAlbumError?>()
+    /// 결과 알림용 Subject
+    private let rx_completion = PublishSubject<SendAlbumError?>()
     
     deinit {
         Log.d(output: "소멸")
@@ -57,6 +58,7 @@ class MyImageDetailVM: NSObject {
         return rx_completion.asDriver(onErrorDriveWith: .empty())
     }
     
+    /// 앨범으로 사진 전송 시도 후 호출되는 메서드
     @objc private func imageToAlbum(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
         //사진 저장 한후
         if let err = error {

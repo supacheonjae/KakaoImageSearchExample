@@ -14,8 +14,10 @@ class HomeVC: ViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    /// 메뉴 화면(HomeVC)의 하위 VC를 표현할 튜플 정의
     typealias SubVCInfo = (title: String, storyboardID: String)
     
+    /// 하위 VC 목록
     private let subVCList = [
         SubVCInfo(title: "검색", storyboardID: "SearchVC"),
         SubVCInfo(title: "내 보관함", storyboardID: "MyImagesVC")
@@ -36,7 +38,6 @@ class HomeVC: ViewController {
         super.viewDidLoad()
 
         setupRx()
-        
     }
     
     /// Rx 바인딩

@@ -24,7 +24,9 @@ class VCLipResp: Mappable {
 
 class VCLipDocuments: Mappable {
     
+    /// 썸네일 URL
     var thumbnail: String!
+    /// 게시물 등록 날짜
     var datetime: Date?
     
     required init?(map: Map) { }

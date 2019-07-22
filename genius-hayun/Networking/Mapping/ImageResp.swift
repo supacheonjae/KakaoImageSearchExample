@@ -24,7 +24,9 @@ class ImageResp: Mappable {
 
 class ImageDocuments: Mappable {
     
+    /// 썸네일 URL
     var thumbnail_url: String!
+    /// 게시물 등록 날짜
     var datetime: Date?
     
     required init?(map: Map) { }

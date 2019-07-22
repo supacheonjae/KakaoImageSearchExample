@@ -33,9 +33,9 @@ class FlexibleButtonAlertVC: ViewController, UICollectionViewDataSource, UIColle
     @IBOutlet weak var lbl_content: UILabel!
     
     /// 제목이 바인딩될 Observable
-    var rx_title = BehaviorRelay<String>(value: "")
+    let rx_title = BehaviorRelay<String>(value: "")
     /// 내용이 바인딩될 Observable
-    var rx_content = BehaviorRelay<String>(value: "")
+    let rx_content = BehaviorRelay<String>(value: "")
     
     /// 버튼의 최대 너비 값
     private let maxCellWidth: CGFloat = 111.0

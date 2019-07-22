@@ -9,13 +9,14 @@
 import Foundation
 import RxSwift
 
+/// API의 정보와 요청, 응답을 관리하는 퍼사드 패턴의 클래스
 class APIManager {
     
     private let API_KEY: String
     
     typealias Parameters = [String : Any]
     
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     
     deinit {
         Log.d(output: "소멸")
@@ -110,7 +111,9 @@ extension APIManager {
     /// API 목록 정의
     enum API: String {
         
+        /// 이미지 검색 API
         case searchImage = "image"
+        /// 동영상 검색 API
         case searchVCLip = "vclip"
         
         var url: String {

@@ -10,12 +10,12 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+/// 검색된 이미지 자세히 보기 화면에서 현재 내가 보고 있는 이미지를
+/// '내 보관함'에 저장할 수 있도록 뒤처리를 해주는 ViewModel
 class SearchDetailVM {
     
-    let disposeBag = DisposeBag()
-    
     /// 이미지 저장 요청 옵저버블
-    private var rx_requestStore: Observable<ImageInfo>
+    private let rx_requestStore: Observable<ImageInfo>
     
     /// 내 보관함에 이미지 저장 시도 후 결과를 방출하는 드라이버
     lazy var rx_result = self.storeData()
@@ -29,6 +29,10 @@ class SearchDetailVM {
         self.rx_requestStore = rx_requestStore
     }
     
+    /// rx_requestStore의 요청에 의한 '내 보관함' 저장 시도 결과 여부를 방출하는 Driver를
+    /// 반환
+    ///
+    /// - Returns: '내 보관함' 저장 시도 결과 여부를 반환하는데, 반환 값이 nil이면 저장 성공!
     private func storeData() -> Driver<StoreError?> {
         
         return rx_requestStore

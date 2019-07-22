@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+/// 검색을 통한 이미지 자세히 보기 화면
 class SearchDetailVC: ViewController {
     
     @IBOutlet weak var btn_close: UIButton!
@@ -18,20 +19,20 @@ class SearchDetailVC: ViewController {
     @IBOutlet weak var btn_nextPage: UIButton!
     
     /// 현재 페이지에 대한 값
-    var rx_currentPage = BehaviorRelay<Int>(value: 0)
+    private let rx_currentPage = BehaviorRelay<Int>(value: 0)
     /// 페이지 뷰 컨트롤러의 아이템들이 될 녀석들
-    var rx_items = BehaviorRelay<[ImageInfo]>(value: [])
+    let rx_items = BehaviorRelay<[ImageInfo]>(value: [])
     
     /// 이미지 저장 로직 담당 뷰 모델
     private var searchDetailVM: SearchDetailVM?
     /// 내 보관함에 이미지 저장 요청 서브젝트
-    private var rx_requestStore = PublishSubject<ImageInfo>()
+    private let rx_requestStore = PublishSubject<ImageInfo>()
     
     /// 이동할 페이지
     var willMoveIdx = 0
     
     /// 스크롤 이동 용도
-    var rx_collectionViewIdx = PublishSubject<Int>()
+    let rx_collectionViewIdx = PublishSubject<Int>()
     
     deinit {
         Log.d(output: "소멸")
@@ -78,7 +79,7 @@ class SearchDetailVC: ViewController {
                 
                 // 얼럿 띄우기
                 guard let err = storeError else {
-                    // 성공
+                    // 내 보관함에 저장 성공!
                     self.showOneButtonNormalAlert(title: "알림", content: "내 보관함에 저장 완료!", btnTitle: "확인")
                     return
                 }

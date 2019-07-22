@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// '내 보관함'에 저장된 파일들을 관리하는 유틸성 싱글톤 클래스
 class DaumImageFileManager {
     
     static let shared = DaumImageFileManager()
@@ -34,21 +35,22 @@ class DaumImageFileManager {
             do {
                 try fileManager.createDirectory(atPath: rootPath.path, withIntermediateDirectories: true, attributes: nil)
             } catch {
+                Log.d(output: "디렉터리 생성 실패.. \(error)")
                 return .unknown
             }
         }
         
         let fileFullPath = rootPath.appendingPathComponent(imageInfo.fileName)
         
-        print(fileFullPath)
-        
         let data = imageInfo.data
         
         guard !fileManager.fileExists(atPath: fileFullPath.path) else {
+            Log.d(output: "\(fileFullPath) 파일이 이미 존재함으로 내 보관함에 저장할 수 없음..")
             return .duplicate
         }
         
         if !fileManager.createFile(atPath: fileFullPath.path, contents: data) {
+            Log.d(output: "\(fileFullPath) 파일 생성 실패..")
             return .unknown
         }
         
@@ -62,9 +64,8 @@ class DaumImageFileManager {
             .appendingPathComponent(prefix)
             .appendingPathComponent(filePath)
         
-        print(fileFullPath.path)
-        
         guard let data = fileManager.contents(atPath: fileFullPath.path) else {
+            Log.d(output: "\(fileFullPath) 파일이 존재하지 않음..")
             return nil
         }
         

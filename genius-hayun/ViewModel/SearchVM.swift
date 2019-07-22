@@ -11,26 +11,42 @@ import RxSwift
 import RxCocoa
 import ObjectMapper
 
+/// 검색어 입력에 의하여 적절한 이미지 목록을 제공하는 ViewModel
+///
+/// 이미지 검색 API와 동영상 검색 API를 활용하여 이미지 URL의 정보를 받은 후
+/// 이 정보를 토대로 이미지를 다운로드합니다.
+/// 그리고 해당 이미지 정보와 다운로드한 이미지 데이터(여기에서는 UIImage)를
+/// 조합한 목록들을 (rx_result)가 방출합니다.
 class SearchVM {
     
+    /// 검색 API로 검색 요청 시 응답되는 값들을 SearchVM에서 필요한 정보들로 정의한 튜플
+    ///
+    /// 이미지 검색 API 또는 동영상 검색 API는 응답 값으로 더 검색이 가능한지에 대한 정보를
+    /// 제공해주는데, 이 튜플의 isEnd가 그에 해당합니다.
     typealias SearchResults = (thumbNailUrlList: [ImageInfo], isEnd: Bool)
     
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     
-    private var rx_requestSearch: Observable<String>
-    private var rx_requestMore: Observable<Void>
+    /// 최초 검색 옵저버블
+    ///
+    /// 검색어를 기준으로 검색을 요청합니다.
+    /// 이 옵저버블이 발행될 때 기존에 검색된 이미지 목록은 사라집니다.
+    private let rx_requestSearch: Observable<String>
+    
+    /// 현재 검색어로 더 검색을 요청할 때 발행되는 옵저버블
+    ///
+    /// rx_requestSearch의 최근 검색어를 기준으로 추가 검색을 요청합니다.
+    private let rx_requestMore: Observable<Void>
     
     // 이미지 API 요청과 응답 관련
-    private var rx_requestImage = PublishSubject<(APIManager.API, APIManager.Parameters?)>()
-    private var rx_responseImageList = PublishSubject<SearchResults>()
-    private var rx_moreImageSearch = PublishSubject<Void>()
+    private let rx_requestImage = PublishSubject<(APIManager.API, APIManager.Parameters?)>() // 이미지 API 검색 요청
+    private let rx_responseImageList = PublishSubject<SearchResults>() // 이미지 API 검색 요청(rx_responseImageList)에 의한 응답 방출용
     
     // 동영상 API 요청과 응답 관련
-    private var rx_requestVCLip = PublishSubject<(APIManager.API, APIManager.Parameters?)>()
-    private var rx_responseVCLipList = PublishSubject<SearchResults>()
-    private var rx_moreVCLipSearch = PublishSubject<Void>()
+    private let rx_requestVCLip = PublishSubject<(APIManager.API, APIManager.Parameters?)>()
+    private let rx_responseVCLipList = PublishSubject<SearchResults>()
     
-    private var rx_totalList = BehaviorSubject<[ImageInfo]>(value: [])
+    private let rx_totalList = BehaviorSubject<[ImageInfo]>(value: [])
     
     lazy var rx_result = self.fetchData()
     
@@ -50,10 +66,10 @@ class SearchVM {
         self.rx_requestSearch = rx_requestSearch
         self.rx_requestMore = rx_requestMore
         
-        self.connectAPIManager()
-        self.setupRxBtn()
+        self.connectAPIManagerWithRx()
+        self.setupRxSearch()
         self.setupRxList()
-        self.setupMoreSearchRx()
+        self.setupRxMoreSearch()
     }
     
     private func fetchData() -> Driver<[ImageInfo]> {
@@ -62,7 +78,7 @@ class SearchVM {
             .asDriver(onErrorJustReturn: [])
     }
     
-    private func connectAPIManager() {
+    private func connectAPIManagerWithRx() {
         // 검색 요청(rx_reqeustImage) -> 응답 -> 검색 결과 방출
         apiManager.request(requestObservable: rx_requestImage)
             .subscribe(onNext: { [unowned self] data, response, err in
@@ -72,29 +88,32 @@ class SearchVM {
                     return
                 }
                 
-                if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
-                    
-                    // json 테스트
-                    guard let json = try? JSONSerialization.jsonObject(with: data) else {
-                        Log.d(output: "json to Any Error")
-                        return
-                    }
-                    
-                    // 응답 객체 매핑
-                    guard let imageResp = Mapper<ImageResp>().map(JSONObject: json) else {
-                        return
-                    }
-                    
-                    let searchResults = imageResp.documents.compactMap { imageInfo -> ImageInfo in
-                        
-                        let imageRef = ImageInfo(thumbNailUrl: imageInfo.thumbnail_url, date: imageInfo.datetime ?? Date())
-                        self.imageManager.loadImage(imageInfo: imageRef)
-                        
-                        return imageRef
-                    }
-                    
-                    self.rx_responseImageList.onNext(SearchResults(searchResults, imageResp.is_end))
+                guard let data = data, let resp = response as? HTTPURLResponse, resp.statusCode == 200 else {
+                    Log.d(output: "Response Error: \(response?.description ?? "Response is nil"))")
+                    return
                 }
+                
+                // json 테스트
+                guard let json = try? JSONSerialization.jsonObject(with: data) else {
+                    Log.d(output: "json to Any Error")
+                    return
+                }
+                
+                // 응답 객체 매핑
+                guard let imageResp = Mapper<ImageResp>().map(JSONObject: json) else {
+                    Log.d(output: "Error occur...ObjectMapper Mappaing is fail")
+                    return
+                }
+                
+                let searchResults = imageResp.documents.compactMap { imageInfo -> ImageInfo in
+                    
+                    let imageRef = ImageInfo(thumbNailUrl: imageInfo.thumbnail_url, date: imageInfo.datetime ?? Date())
+                    self.imageManager.loadImage(imageInfo: imageRef)
+                    
+                    return imageRef
+                }
+                
+                self.rx_responseImageList.onNext(SearchResults(searchResults, imageResp.is_end))
             })
             .disposed(by: disposeBag)
         
@@ -107,35 +126,39 @@ class SearchVM {
                     return
                 }
                 
-                if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
-                    
-                    // json 테스트
-                    guard let json = try? JSONSerialization.jsonObject(with: data) else {
-                        Log.d(output: "json to Any Error")
-                        return
-                    }
-                    
-                    // 응답 객체 매핑
-                    guard let vclipResp = Mapper<VCLipResp>().map(JSONObject: json) else {
-                        return
-                    }
-                    
-                    let searchResults = vclipResp.documents.compactMap { vclipInfo -> ImageInfo in
-                        
-                        let imageRef = ImageInfo(thumbNailUrl: vclipInfo.thumbnail, date: vclipInfo.datetime ?? Date())
-                        self.imageManager.loadImage(imageInfo: imageRef)
-                        
-                        return imageRef
-                    }
-                    
-                    self.rx_responseVCLipList.onNext(SearchResults(searchResults, vclipResp.is_end))
+                guard let data = data, let resp = response as? HTTPURLResponse, resp.statusCode == 200 else {
+                    Log.d(output: "Response Error: \(response?.description ?? "Response is nil"))")
+                    return
                 }
+                    
+                // json 테스트
+                guard let json = try? JSONSerialization.jsonObject(with: data) else {
+                    Log.d(output: "json to Any Error")
+                    return
+                }
+                
+                // 응답 객체 매핑
+                guard let vclipResp = Mapper<VCLipResp>().map(JSONObject: json) else {
+                    Log.d(output: "Error occur...ObjectMapper Mappaing is fail")
+                    return
+                }
+                
+                let searchResults = vclipResp.documents.compactMap { vclipInfo -> ImageInfo in
+                    
+                    let imageRef = ImageInfo(thumbNailUrl: vclipInfo.thumbnail, date: vclipInfo.datetime ?? Date())
+                    self.imageManager.loadImage(imageInfo: imageRef)
+                    
+                    return imageRef
+                }
+                
+                self.rx_responseVCLipList.onNext(SearchResults(searchResults, vclipResp.is_end))
+                
             })
             .disposed(by: disposeBag)
     }
     
     // 검색, 더 보기 방출에 따른 연결 동작
-    private func setupRxBtn() {
+    private func setupRxSearch() {
         // 검색 버튼 -> 누적 리스트 초기화 -> 검색 요청
         rx_requestSearch
             .subscribe(onNext: { [unowned self] keyword in
@@ -158,16 +181,6 @@ class SearchVM {
                 self.rx_requestVCLip.onNext((.searchVCLip, params))
             })
             .disposed(by: disposeBag)
-        
-        // 더 보기 -> 이미지 더 검색 요청
-        rx_requestMore
-            .bind(to: rx_moreImageSearch)
-            .disposed(by: disposeBag)
- 
-        // 더 보기 -> 동영상 더 검색 요청
-        rx_requestMore
-            .bind(to: rx_moreVCLipSearch)
-            .disposed(by: disposeBag)
     }
     
     // 응답 리스트에 따른 리스트 누적
@@ -181,11 +194,14 @@ class SearchVM {
             .zip(rx_responseImageList, rx_responseVCLipList)
 
         
-        // 검색 요청(rx_requestSearch, rx_moreImageSearch) -> 응답 리스트들 zip 소팅 -> 현재 검색 리스트에 누적
+        // 응답 리스트들 zip 소팅 -> 현재 검색 리스트에 누적
+        // 한 요청에 의해 각각의 응답 옵저버블(rx_responseImageList, rx_responseVCLipList)은 반드시 반응
+        // (이 각각의 응답 옵저버블은 더 이상 검색할 것이 없는 상태여도 빈 배열을 방출함)
         zip_respList
             .withLatestFrom(comb_allList)
             .map { responseImageList, responseVCLipList, totalList in
                 
+                // 새 검색 또는 더 검색에 의한 이미지 목록들을 날짜 최신순으로 소팅
                 let sortedList = (responseImageList.thumbNailUrlList + responseVCLipList.thumbNailUrlList)
                     .sorted {
                         // 날짜 최신순 소팅
@@ -198,20 +214,20 @@ class SearchVM {
             .disposed(by: disposeBag)
     }
     
-    // 더 검색 요청 구현
-    private func setupMoreSearchRx() {
+    /// 더 검색 요청 구현
+    private func setupRxMoreSearch() {
         
         let comb_searchImage = Observable
             .combineLatest(rx_requestSearch, rx_responseImageList, rx_responseVCLipList)
         
         // 이미지 더 검색 요청 시도
-        rx_moreImageSearch
+        rx_requestMore
             .withLatestFrom(comb_searchImage)
             .subscribe(onNext: { [unowned self] keyword, responseImageList, responseVCLipList in
                 
                 // 끝나지 않았으면 계속 더 검색 요청
                 if !responseImageList.isEnd {
-                    self.imageListPage += 1
+                    self.imageListPage += 1 // 검색 페이지 1 증가
                     
                     let params: [String : Any] = [
                         "query": keyword,

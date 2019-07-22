@@ -14,7 +14,7 @@ class DetailPageItemVC: ViewController {
     
     @IBOutlet weak var imgView: UIImageView!
     
-    var rx_imageInfo = BehaviorRelay<ImageInfo?>(value: nil)
+    let rx_imageInfo = BehaviorRelay<ImageInfo?>(value: nil)
     var pageIndex: Int = 0
     
     

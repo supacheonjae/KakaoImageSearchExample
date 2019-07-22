@@ -1,0 +1,984 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D2896CCAC7CE1B8812AF743 /* Pods_genius_hayunTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4EE392A98557636EAF8313 /* Pods_genius_hayunTests.framework */; };
+		112E6C09E77402E7A7D9EEE2 /* Pods_genius_hayunUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7513EBE178256D68A4B19CD7 /* Pods_genius_hayunUITests.framework */; };
+		8515097A22E355B8001D129C /* VCLipResp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8515097922E355B8001D129C /* VCLipResp.swift */; };
+		8515097C22E35D6E001D129C /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8515097B22E35D6E001D129C /* RealmManager.swift */; };
+		8515097F22E35DFD001D129C /* MyImagesInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8515097E22E35DFD001D129C /* MyImagesInfo.swift */; };
+		85169A1722E486C100151EA7 /* FlexibleButtonAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85169A1622E486C100151EA7 /* FlexibleButtonAlertVC.swift */; };
+		85169A1922E4873C00151EA7 /* FlexibleButtonAlertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85169A1822E4873C00151EA7 /* FlexibleButtonAlertCell.swift */; };
+		85169A1B22E49EE500151EA7 /* MyImagesDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85169A1A22E49EE500151EA7 /* MyImagesDetailVC.swift */; };
+		85169A1D22E4A00200151EA7 /* MyImagesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85169A1C22E4A00200151EA7 /* MyImagesVM.swift */; };
+		85169A1F22E4B3CF00151EA7 /* MyImageDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85169A1E22E4B3CF00151EA7 /* MyImageDetailVM.swift */; };
+		8543B68322E5472B0092290C /* KakaoService_Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8543B68222E5472B0092290C /* KakaoService_Info.plist */; };
+		859DAFAB22E31A3700B52343 /* SearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859DAFAA22E31A3700B52343 /* SearchVM.swift */; };
+		859DAFAE22E32A6700B52343 /* ImageResp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859DAFAD22E32A6700B52343 /* ImageResp.swift */; };
+		859DAFB122E3347B00B52343 /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859DAFB022E3347B00B52343 /* DateConverter.swift */; };
+		85B0989922E42E5300055D2E /* SearchDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B0989822E42E5300055D2E /* SearchDetailVC.swift */; };
+		85ECA6CB22E37C8100BFD5EA /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ECA6CA22E37C8100BFD5EA /* ImageCell.swift */; };
+		85EEB41B22E1BF6B00AA8F06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EEB41A22E1BF6B00AA8F06 /* AppDelegate.swift */; };
+		85EEB41D22E1BF6B00AA8F06 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EEB41C22E1BF6B00AA8F06 /* ViewController.swift */; };
+		85EEB42022E1BF6B00AA8F06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85EEB41E22E1BF6B00AA8F06 /* Main.storyboard */; };
+		85EEB42222E1BF6C00AA8F06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85EEB42122E1BF6C00AA8F06 /* Assets.xcassets */; };
+		85EEB42522E1BF6C00AA8F06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85EEB42322E1BF6C00AA8F06 /* LaunchScreen.storyboard */; };
+		85EEB43022E1BF6C00AA8F06 /* genius_hayunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EEB42F22E1BF6C00AA8F06 /* genius_hayunTests.swift */; };
+		85EEB43B22E1BF6C00AA8F06 /* genius_hayunUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EEB43A22E1BF6C00AA8F06 /* genius_hayunUITests.swift */; };
+		85EFADEB22E2D1F40012B583 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EFADEA22E2D1F40012B583 /* MenuCell.swift */; };
+		85EFADEF22E2D3CA0012B583 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EFADEE22E2D3CA0012B583 /* HomeVC.swift */; };
+		85EFADF122E2D4770012B583 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EFADF022E2D4770012B583 /* SearchVC.swift */; };
+		85EFADF322E2D4C80012B583 /* MyImagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EFADF222E2D4C80012B583 /* MyImagesVC.swift */; };
+		85EFADF622E2D6D40012B583 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EFADF522E2D6D40012B583 /* Log.swift */; };
+		85EFADF822E2DA810012B583 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EFADF722E2DA810012B583 /* UIView.swift */; };
+		85EFAE0322E2E5860012B583 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85EFAE0222E2E5860012B583 /* Images.xcassets */; };
+		85EFAE0622E2EA560012B583 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EFAE0522E2EA560012B583 /* ImageManager.swift */; };
+		85EFAE0D22E2EAFB0012B583 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EFAE0C22E2EAFB0012B583 /* APIManager.swift */; };
+		85F8B5D822E4007E00E9D496 /* DaumSearchCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8B5D722E4007E00E9D496 /* DaumSearchCollectionViewLayout.swift */; };
+		85FEC9D022E4319600DEF0D1 /* DetailPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FEC9CF22E4319600DEF0D1 /* DetailPageVC.swift */; };
+		85FEC9D422E433BE00DEF0D1 /* DetailPageItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FEC9D322E433BE00DEF0D1 /* DetailPageItemVC.swift */; };
+		85FEC9D622E445D900DEF0D1 /* SearchDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FEC9D522E445D900DEF0D1 /* SearchDetailVM.swift */; };
+		85FEC9D922E4474500DEF0D1 /* ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FEC9D822E4474500DEF0D1 /* ImageInfo.swift */; };
+		85FEC9DB22E44F8E00DEF0D1 /* RealmManager+MyImagesInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FEC9DA22E44F8E00DEF0D1 /* RealmManager+MyImagesInfo.swift */; };
+		85FEC9DD22E453EE00DEF0D1 /* DaumImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FEC9DC22E453EE00DEF0D1 /* DaumImageFileManager.swift */; };
+		85FEC9DF22E454FD00DEF0D1 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FEC9DE22E454FD00DEF0D1 /* Enum.swift */; };
+		F378C0139C7EAF913A840912 /* Pods_genius_hayun.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A1DD54337FE00383820CA2D /* Pods_genius_hayun.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		85EEB42C22E1BF6C00AA8F06 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85EEB40F22E1BF6A00AA8F06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 85EEB41622E1BF6B00AA8F06;
+			remoteInfo = "genius-hayun";
+		};
+		85EEB43722E1BF6C00AA8F06 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85EEB40F22E1BF6A00AA8F06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 85EEB41622E1BF6B00AA8F06;
+			remoteInfo = "genius-hayun";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2A1DD54337FE00383820CA2D /* Pods_genius_hayun.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_genius_hayun.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C4EE392A98557636EAF8313 /* Pods_genius_hayunTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_genius_hayunTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55F55E1C1CA0F1646CDC11BA /* Pods-genius-hayun.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-genius-hayun.debug.xcconfig"; path = "Target Support Files/Pods-genius-hayun/Pods-genius-hayun.debug.xcconfig"; sourceTree = "<group>"; };
+		6717938EB18DFDCE55A66590 /* Pods-genius-hayun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-genius-hayun.release.xcconfig"; path = "Target Support Files/Pods-genius-hayun/Pods-genius-hayun.release.xcconfig"; sourceTree = "<group>"; };
+		7513EBE178256D68A4B19CD7 /* Pods_genius_hayunUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_genius_hayunUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8515097922E355B8001D129C /* VCLipResp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCLipResp.swift; sourceTree = "<group>"; };
+		8515097B22E35D6E001D129C /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		8515097E22E35DFD001D129C /* MyImagesInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImagesInfo.swift; sourceTree = "<group>"; };
+		85169A1622E486C100151EA7 /* FlexibleButtonAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleButtonAlertVC.swift; sourceTree = "<group>"; };
+		85169A1822E4873C00151EA7 /* FlexibleButtonAlertCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleButtonAlertCell.swift; sourceTree = "<group>"; };
+		85169A1A22E49EE500151EA7 /* MyImagesDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImagesDetailVC.swift; sourceTree = "<group>"; };
+		85169A1C22E4A00200151EA7 /* MyImagesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImagesVM.swift; sourceTree = "<group>"; };
+		85169A1E22E4B3CF00151EA7 /* MyImageDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImageDetailVM.swift; sourceTree = "<group>"; };
+		8543B68222E5472B0092290C /* KakaoService_Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = KakaoService_Info.plist; sourceTree = "<group>"; };
+		859DAFAA22E31A3700B52343 /* SearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVM.swift; sourceTree = "<group>"; };
+		859DAFAD22E32A6700B52343 /* ImageResp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResp.swift; sourceTree = "<group>"; };
+		859DAFB022E3347B00B52343 /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
+		85B0989822E42E5300055D2E /* SearchDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailVC.swift; sourceTree = "<group>"; };
+		85ECA6CA22E37C8100BFD5EA /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		85EEB41722E1BF6B00AA8F06 /* genius-hayun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "genius-hayun.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		85EEB41A22E1BF6B00AA8F06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		85EEB41C22E1BF6B00AA8F06 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		85EEB41F22E1BF6B00AA8F06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		85EEB42122E1BF6C00AA8F06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		85EEB42422E1BF6C00AA8F06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		85EEB42622E1BF6C00AA8F06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85EEB42B22E1BF6C00AA8F06 /* genius-hayunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "genius-hayunTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		85EEB42F22E1BF6C00AA8F06 /* genius_hayunTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = genius_hayunTests.swift; sourceTree = "<group>"; };
+		85EEB43122E1BF6C00AA8F06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85EEB43622E1BF6C00AA8F06 /* genius-hayunUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "genius-hayunUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		85EEB43A22E1BF6C00AA8F06 /* genius_hayunUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = genius_hayunUITests.swift; sourceTree = "<group>"; };
+		85EEB43C22E1BF6C00AA8F06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85EFADEA22E2D1F40012B583 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		85EFADEE22E2D3CA0012B583 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		85EFADF022E2D4770012B583 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		85EFADF222E2D4C80012B583 /* MyImagesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImagesVC.swift; sourceTree = "<group>"; };
+		85EFADF522E2D6D40012B583 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		85EFADF722E2DA810012B583 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		85EFAE0222E2E5860012B583 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		85EFAE0522E2EA560012B583 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		85EFAE0C22E2EAFB0012B583 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		85F8B5D722E4007E00E9D496 /* DaumSearchCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaumSearchCollectionViewLayout.swift; sourceTree = "<group>"; };
+		85FEC9CF22E4319600DEF0D1 /* DetailPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPageVC.swift; sourceTree = "<group>"; };
+		85FEC9D322E433BE00DEF0D1 /* DetailPageItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPageItemVC.swift; sourceTree = "<group>"; };
+		85FEC9D522E445D900DEF0D1 /* SearchDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailVM.swift; sourceTree = "<group>"; };
+		85FEC9D822E4474500DEF0D1 /* ImageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfo.swift; sourceTree = "<group>"; };
+		85FEC9DA22E44F8E00DEF0D1 /* RealmManager+MyImagesInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealmManager+MyImagesInfo.swift"; sourceTree = "<group>"; };
+		85FEC9DC22E453EE00DEF0D1 /* DaumImageFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaumImageFileManager.swift; sourceTree = "<group>"; };
+		85FEC9DE22E454FD00DEF0D1 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		A20D67107F4F82553B36E390 /* Pods-genius-hayunUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-genius-hayunUITests.debug.xcconfig"; path = "Target Support Files/Pods-genius-hayunUITests/Pods-genius-hayunUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		CBC313D4BE1A7D3239D85BFD /* Pods-genius-hayunTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-genius-hayunTests.release.xcconfig"; path = "Target Support Files/Pods-genius-hayunTests/Pods-genius-hayunTests.release.xcconfig"; sourceTree = "<group>"; };
+		D636F6FB4DF90ACE8CFA5161 /* Pods-genius-hayunTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-genius-hayunTests.debug.xcconfig"; path = "Target Support Files/Pods-genius-hayunTests/Pods-genius-hayunTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DFF327CA5E3326C56C04D65B /* Pods-genius-hayunUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-genius-hayunUITests.release.xcconfig"; path = "Target Support Files/Pods-genius-hayunUITests/Pods-genius-hayunUITests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		85EEB41422E1BF6B00AA8F06 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F378C0139C7EAF913A840912 /* Pods_genius_hayun.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85EEB42822E1BF6C00AA8F06 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D2896CCAC7CE1B8812AF743 /* Pods_genius_hayunTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85EEB43322E1BF6C00AA8F06 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				112E6C09E77402E7A7D9EEE2 /* Pods_genius_hayunUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8515097D22E35DA3001D129C /* RealmObject */ = {
+			isa = PBXGroup;
+			children = (
+				8515097E22E35DFD001D129C /* MyImagesInfo.swift */,
+			);
+			path = RealmObject;
+			sourceTree = "<group>";
+		};
+		859DAFAC22E326C100B52343 /* Mapping */ = {
+			isa = PBXGroup;
+			children = (
+				859DAFAD22E32A6700B52343 /* ImageResp.swift */,
+				8515097922E355B8001D129C /* VCLipResp.swift */,
+			);
+			path = Mapping;
+			sourceTree = "<group>";
+		};
+		859DAFAF22E3344D00B52343 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				859DAFB022E3347B00B52343 /* DateConverter.swift */,
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
+		85EEB40E22E1BF6A00AA8F06 = {
+			isa = PBXGroup;
+			children = (
+				85EEB41922E1BF6B00AA8F06 /* genius-hayun */,
+				85EEB42E22E1BF6C00AA8F06 /* genius-hayunTests */,
+				85EEB43922E1BF6C00AA8F06 /* genius-hayunUITests */,
+				85EEB41822E1BF6B00AA8F06 /* Products */,
+				C40B50DF057EBA0671AC1866 /* Pods */,
+				9E49E8373EFF7D91E1B7F4B2 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		85EEB41822E1BF6B00AA8F06 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				85EEB41722E1BF6B00AA8F06 /* genius-hayun.app */,
+				85EEB42B22E1BF6C00AA8F06 /* genius-hayunTests.xctest */,
+				85EEB43622E1BF6C00AA8F06 /* genius-hayunUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		85EEB41922E1BF6B00AA8F06 /* genius-hayun */ = {
+			isa = PBXGroup;
+			children = (
+				85EFADE922E2D1CA0012B583 /* Cell */,
+				85EFADF422E2D6A40012B583 /* Common */,
+				85F8B5D422E3FECE00E9D496 /* CustomView */,
+				85FEC9D722E4473300DEF0D1 /* Data */,
+				85EFAE0A22E2EAAF0012B583 /* Networking */,
+				85EFAE0422E2EA310012B583 /* Util */,
+				85EFADEC22E2D2530012B583 /* View */,
+				85EFADF922E2DA870012B583 /* ViewExtension */,
+				85EFADED22E2D26E0012B583 /* ViewModel */,
+				85EEB42622E1BF6C00AA8F06 /* Info.plist */,
+				8543B68222E5472B0092290C /* KakaoService_Info.plist */,
+				85EEB41A22E1BF6B00AA8F06 /* AppDelegate.swift */,
+				85EEB42122E1BF6C00AA8F06 /* Assets.xcassets */,
+				85EFAE0222E2E5860012B583 /* Images.xcassets */,
+				85EEB42322E1BF6C00AA8F06 /* LaunchScreen.storyboard */,
+				85EEB41E22E1BF6B00AA8F06 /* Main.storyboard */,
+			);
+			path = "genius-hayun";
+			sourceTree = "<group>";
+		};
+		85EEB42E22E1BF6C00AA8F06 /* genius-hayunTests */ = {
+			isa = PBXGroup;
+			children = (
+				85EEB42F22E1BF6C00AA8F06 /* genius_hayunTests.swift */,
+				85EEB43122E1BF6C00AA8F06 /* Info.plist */,
+			);
+			path = "genius-hayunTests";
+			sourceTree = "<group>";
+		};
+		85EEB43922E1BF6C00AA8F06 /* genius-hayunUITests */ = {
+			isa = PBXGroup;
+			children = (
+				85EEB43A22E1BF6C00AA8F06 /* genius_hayunUITests.swift */,
+				85EEB43C22E1BF6C00AA8F06 /* Info.plist */,
+			);
+			path = "genius-hayunUITests";
+			sourceTree = "<group>";
+		};
+		85EFADE922E2D1CA0012B583 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				85169A1822E4873C00151EA7 /* FlexibleButtonAlertCell.swift */,
+				85ECA6CA22E37C8100BFD5EA /* ImageCell.swift */,
+				85EFADEA22E2D1F40012B583 /* MenuCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		85EFADEC22E2D2530012B583 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				85FEC9D322E433BE00DEF0D1 /* DetailPageItemVC.swift */,
+				85FEC9CF22E4319600DEF0D1 /* DetailPageVC.swift */,
+				85169A1622E486C100151EA7 /* FlexibleButtonAlertVC.swift */,
+				85EFADEE22E2D3CA0012B583 /* HomeVC.swift */,
+				85169A1A22E49EE500151EA7 /* MyImagesDetailVC.swift */,
+				85EFADF222E2D4C80012B583 /* MyImagesVC.swift */,
+				85B0989822E42E5300055D2E /* SearchDetailVC.swift */,
+				85EFADF022E2D4770012B583 /* SearchVC.swift */,
+				85EEB41C22E1BF6B00AA8F06 /* ViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		85EFADED22E2D26E0012B583 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				85169A1E22E4B3CF00151EA7 /* MyImageDetailVM.swift */,
+				85169A1C22E4A00200151EA7 /* MyImagesVM.swift */,
+				85FEC9D522E445D900DEF0D1 /* SearchDetailVM.swift */,
+				859DAFAA22E31A3700B52343 /* SearchVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		85EFADF422E2D6A40012B583 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				85FEC9DE22E454FD00DEF0D1 /* Enum.swift */,
+				85EFADF522E2D6D40012B583 /* Log.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		85EFADF922E2DA870012B583 /* ViewExtension */ = {
+			isa = PBXGroup;
+			children = (
+				85EFADF722E2DA810012B583 /* UIView.swift */,
+			);
+			path = ViewExtension;
+			sourceTree = "<group>";
+		};
+		85EFAE0422E2EA310012B583 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				859DAFAF22E3344D00B52343 /* Date */,
+				85EFAE0822E2EA6F0012B583 /* File */,
+				85EFAE0722E2EA600012B583 /* Image */,
+				85EFAE0922E2EA770012B583 /* Realm */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		85EFAE0722E2EA600012B583 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				85EFAE0522E2EA560012B583 /* ImageManager.swift */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		85EFAE0822E2EA6F0012B583 /* File */ = {
+			isa = PBXGroup;
+			children = (
+				85FEC9DC22E453EE00DEF0D1 /* DaumImageFileManager.swift */,
+			);
+			path = File;
+			sourceTree = "<group>";
+		};
+		85EFAE0922E2EA770012B583 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				8515097D22E35DA3001D129C /* RealmObject */,
+				8515097B22E35D6E001D129C /* RealmManager.swift */,
+				85FEC9DA22E44F8E00DEF0D1 /* RealmManager+MyImagesInfo.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		85EFAE0A22E2EAAF0012B583 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				859DAFAC22E326C100B52343 /* Mapping */,
+				85EFAE0C22E2EAFB0012B583 /* APIManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		85F8B5D422E3FECE00E9D496 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				85F8B5D722E4007E00E9D496 /* DaumSearchCollectionViewLayout.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		85FEC9D722E4473300DEF0D1 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				85FEC9D822E4474500DEF0D1 /* ImageInfo.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		9E49E8373EFF7D91E1B7F4B2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2A1DD54337FE00383820CA2D /* Pods_genius_hayun.framework */,
+				3C4EE392A98557636EAF8313 /* Pods_genius_hayunTests.framework */,
+				7513EBE178256D68A4B19CD7 /* Pods_genius_hayunUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C40B50DF057EBA0671AC1866 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				55F55E1C1CA0F1646CDC11BA /* Pods-genius-hayun.debug.xcconfig */,
+				6717938EB18DFDCE55A66590 /* Pods-genius-hayun.release.xcconfig */,
+				D636F6FB4DF90ACE8CFA5161 /* Pods-genius-hayunTests.debug.xcconfig */,
+				CBC313D4BE1A7D3239D85BFD /* Pods-genius-hayunTests.release.xcconfig */,
+				A20D67107F4F82553B36E390 /* Pods-genius-hayunUITests.debug.xcconfig */,
+				DFF327CA5E3326C56C04D65B /* Pods-genius-hayunUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		85EEB41622E1BF6B00AA8F06 /* genius-hayun */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 85EEB43F22E1BF6C00AA8F06 /* Build configuration list for PBXNativeTarget "genius-hayun" */;
+			buildPhases = (
+				9CC20D9F11E58C83F1568CAF /* [CP] Check Pods Manifest.lock */,
+				85EEB41322E1BF6B00AA8F06 /* Sources */,
+				85EEB41422E1BF6B00AA8F06 /* Frameworks */,
+				85EEB41522E1BF6B00AA8F06 /* Resources */,
+				DF58ED527F890BA4DB0017EC /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "genius-hayun";
+			productName = "genius-hayun";
+			productReference = 85EEB41722E1BF6B00AA8F06 /* genius-hayun.app */;
+			productType = "com.apple.product-type.application";
+		};
+		85EEB42A22E1BF6C00AA8F06 /* genius-hayunTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 85EEB44222E1BF6C00AA8F06 /* Build configuration list for PBXNativeTarget "genius-hayunTests" */;
+			buildPhases = (
+				449169F1992708D1F45E7C29 /* [CP] Check Pods Manifest.lock */,
+				85EEB42722E1BF6C00AA8F06 /* Sources */,
+				85EEB42822E1BF6C00AA8F06 /* Frameworks */,
+				85EEB42922E1BF6C00AA8F06 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				85EEB42D22E1BF6C00AA8F06 /* PBXTargetDependency */,
+			);
+			name = "genius-hayunTests";
+			productName = "genius-hayunTests";
+			productReference = 85EEB42B22E1BF6C00AA8F06 /* genius-hayunTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		85EEB43522E1BF6C00AA8F06 /* genius-hayunUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 85EEB44522E1BF6C00AA8F06 /* Build configuration list for PBXNativeTarget "genius-hayunUITests" */;
+			buildPhases = (
+				8E845A9E9A7FA1B686F8030B /* [CP] Check Pods Manifest.lock */,
+				85EEB43222E1BF6C00AA8F06 /* Sources */,
+				85EEB43322E1BF6C00AA8F06 /* Frameworks */,
+				85EEB43422E1BF6C00AA8F06 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				85EEB43822E1BF6C00AA8F06 /* PBXTargetDependency */,
+			);
+			name = "genius-hayunUITests";
+			productName = "genius-hayunUITests";
+			productReference = 85EEB43622E1BF6C00AA8F06 /* genius-hayunUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		85EEB40F22E1BF6A00AA8F06 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "하윤2";
+				TargetAttributes = {
+					85EEB41622E1BF6B00AA8F06 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					85EEB42A22E1BF6C00AA8F06 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 85EEB41622E1BF6B00AA8F06;
+					};
+					85EEB43522E1BF6C00AA8F06 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 85EEB41622E1BF6B00AA8F06;
+					};
+				};
+			};
+			buildConfigurationList = 85EEB41222E1BF6B00AA8F06 /* Build configuration list for PBXProject "genius-hayun" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 85EEB40E22E1BF6A00AA8F06;
+			productRefGroup = 85EEB41822E1BF6B00AA8F06 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				85EEB41622E1BF6B00AA8F06 /* genius-hayun */,
+				85EEB42A22E1BF6C00AA8F06 /* genius-hayunTests */,
+				85EEB43522E1BF6C00AA8F06 /* genius-hayunUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		85EEB41522E1BF6B00AA8F06 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8543B68322E5472B0092290C /* KakaoService_Info.plist in Resources */,
+				85EEB42522E1BF6C00AA8F06 /* LaunchScreen.storyboard in Resources */,
+				85EFAE0322E2E5860012B583 /* Images.xcassets in Resources */,
+				85EEB42222E1BF6C00AA8F06 /* Assets.xcassets in Resources */,
+				85EEB42022E1BF6B00AA8F06 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85EEB42922E1BF6C00AA8F06 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85EEB43422E1BF6C00AA8F06 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		449169F1992708D1F45E7C29 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-genius-hayunTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8E845A9E9A7FA1B686F8030B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-genius-hayunUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9CC20D9F11E58C83F1568CAF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-genius-hayun-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF58ED527F890BA4DB0017EC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-genius-hayun/Pods-genius-hayun-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRealm/RxRealm.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRealm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-genius-hayun/Pods-genius-hayun-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		85EEB41322E1BF6B00AA8F06 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85EFADF822E2DA810012B583 /* UIView.swift in Sources */,
+				85FEC9D622E445D900DEF0D1 /* SearchDetailVM.swift in Sources */,
+				859DAFB122E3347B00B52343 /* DateConverter.swift in Sources */,
+				8515097F22E35DFD001D129C /* MyImagesInfo.swift in Sources */,
+				8515097C22E35D6E001D129C /* RealmManager.swift in Sources */,
+				85FEC9DF22E454FD00DEF0D1 /* Enum.swift in Sources */,
+				85EFADF322E2D4C80012B583 /* MyImagesVC.swift in Sources */,
+				85EFAE0D22E2EAFB0012B583 /* APIManager.swift in Sources */,
+				85FEC9D022E4319600DEF0D1 /* DetailPageVC.swift in Sources */,
+				85ECA6CB22E37C8100BFD5EA /* ImageCell.swift in Sources */,
+				85FEC9D922E4474500DEF0D1 /* ImageInfo.swift in Sources */,
+				85169A1722E486C100151EA7 /* FlexibleButtonAlertVC.swift in Sources */,
+				85169A1D22E4A00200151EA7 /* MyImagesVM.swift in Sources */,
+				85FEC9DD22E453EE00DEF0D1 /* DaumImageFileManager.swift in Sources */,
+				85EFADF622E2D6D40012B583 /* Log.swift in Sources */,
+				85EFAE0622E2EA560012B583 /* ImageManager.swift in Sources */,
+				85FEC9D422E433BE00DEF0D1 /* DetailPageItemVC.swift in Sources */,
+				8515097A22E355B8001D129C /* VCLipResp.swift in Sources */,
+				85EEB41D22E1BF6B00AA8F06 /* ViewController.swift in Sources */,
+				85FEC9DB22E44F8E00DEF0D1 /* RealmManager+MyImagesInfo.swift in Sources */,
+				85169A1922E4873C00151EA7 /* FlexibleButtonAlertCell.swift in Sources */,
+				85169A1F22E4B3CF00151EA7 /* MyImageDetailVM.swift in Sources */,
+				85EFADF122E2D4770012B583 /* SearchVC.swift in Sources */,
+				85169A1B22E49EE500151EA7 /* MyImagesDetailVC.swift in Sources */,
+				85B0989922E42E5300055D2E /* SearchDetailVC.swift in Sources */,
+				859DAFAE22E32A6700B52343 /* ImageResp.swift in Sources */,
+				85EFADEF22E2D3CA0012B583 /* HomeVC.swift in Sources */,
+				85EEB41B22E1BF6B00AA8F06 /* AppDelegate.swift in Sources */,
+				85F8B5D822E4007E00E9D496 /* DaumSearchCollectionViewLayout.swift in Sources */,
+				859DAFAB22E31A3700B52343 /* SearchVM.swift in Sources */,
+				85EFADEB22E2D1F40012B583 /* MenuCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85EEB42722E1BF6C00AA8F06 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85EEB43022E1BF6C00AA8F06 /* genius_hayunTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85EEB43222E1BF6C00AA8F06 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85EEB43B22E1BF6C00AA8F06 /* genius_hayunUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		85EEB42D22E1BF6C00AA8F06 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 85EEB41622E1BF6B00AA8F06 /* genius-hayun */;
+			targetProxy = 85EEB42C22E1BF6C00AA8F06 /* PBXContainerItemProxy */;
+		};
+		85EEB43822E1BF6C00AA8F06 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 85EEB41622E1BF6B00AA8F06 /* genius-hayun */;
+			targetProxy = 85EEB43722E1BF6C00AA8F06 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		85EEB41E22E1BF6B00AA8F06 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				85EEB41F22E1BF6B00AA8F06 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		85EEB42322E1BF6C00AA8F06 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				85EEB42422E1BF6C00AA8F06 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		85EEB43D22E1BF6C00AA8F06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		85EEB43E22E1BF6C00AA8F06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		85EEB44022E1BF6C00AA8F06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55F55E1C1CA0F1646CDC11BA /* Pods-genius-hayun.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "genius-hayun/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cheonjae-hayun.genius-hayun";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		85EEB44122E1BF6C00AA8F06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6717938EB18DFDCE55A66590 /* Pods-genius-hayun.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "genius-hayun/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cheonjae-hayun.genius-hayun";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		85EEB44322E1BF6C00AA8F06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D636F6FB4DF90ACE8CFA5161 /* Pods-genius-hayunTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "genius-hayunTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cheonjae-hayun.genius-hayunTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/genius-hayun.app/genius-hayun";
+			};
+			name = Debug;
+		};
+		85EEB44422E1BF6C00AA8F06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CBC313D4BE1A7D3239D85BFD /* Pods-genius-hayunTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "genius-hayunTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cheonjae-hayun.genius-hayunTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/genius-hayun.app/genius-hayun";
+			};
+			name = Release;
+		};
+		85EEB44622E1BF6C00AA8F06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A20D67107F4F82553B36E390 /* Pods-genius-hayunUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "genius-hayunUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cheonjae-hayun.genius-hayunUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "genius-hayun";
+			};
+			name = Debug;
+		};
+		85EEB44722E1BF6C00AA8F06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFF327CA5E3326C56C04D65B /* Pods-genius-hayunUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "genius-hayunUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cheonjae-hayun.genius-hayunUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "genius-hayun";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		85EEB41222E1BF6B00AA8F06 /* Build configuration list for PBXProject "genius-hayun" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				85EEB43D22E1BF6C00AA8F06 /* Debug */,
+				85EEB43E22E1BF6C00AA8F06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		85EEB43F22E1BF6C00AA8F06 /* Build configuration list for PBXNativeTarget "genius-hayun" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				85EEB44022E1BF6C00AA8F06 /* Debug */,
+				85EEB44122E1BF6C00AA8F06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		85EEB44222E1BF6C00AA8F06 /* Build configuration list for PBXNativeTarget "genius-hayunTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				85EEB44322E1BF6C00AA8F06 /* Debug */,
+				85EEB44422E1BF6C00AA8F06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		85EEB44522E1BF6C00AA8F06 /* Build configuration list for PBXNativeTarget "genius-hayunUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				85EEB44622E1BF6C00AA8F06 /* Debug */,
+				85EEB44722E1BF6C00AA8F06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 85EEB40F22E1BF6A00AA8F06 /* Project object */;
+}

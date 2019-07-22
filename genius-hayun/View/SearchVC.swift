@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+/// 검색 화면
 class SearchVC: ViewController, UITextFieldDelegate, UICollectionViewDelegate {
     
     @IBOutlet weak var btn_search: UIButton!
@@ -17,11 +18,16 @@ class SearchVC: ViewController, UITextFieldDelegate, UICollectionViewDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var rx_requestSearch = PublishSubject<String>()
-    var rx_requestMore = PublishSubject<Void>()
-    var searchVM: SearchVM?
+    /// 검색 버튼(btn_search)에 반응하는 Subject
+    private let rx_requestSearch = PublishSubject<String>()
+    /// 현재 검색어를 기반으로 더 검색 요청하는 Subject
+    private let rx_requestMore = PublishSubject<Void>()
+    private var searchVM: SearchVM? // 뷰모델
     
-    var photoHeightDic: [Int : CGFloat] = [:]
+    /// collectionView의 각 셀의 이미지 높이에 대한 딕셔너리
+    ///
+    /// 각 셀의 IndexPath.Item을 Key로 갖고, 이미지 높이 값을 Value로 갖습니다.
+    private var photoHeightDic: [Int : CGFloat] = [:]
     
     deinit {
         Log.d(output: "소멸")
@@ -89,6 +95,7 @@ class SearchVC: ViewController, UITextFieldDelegate, UICollectionViewDelegate {
                             
                             // 이미지가 nil 아닐 때만 높이 값 저장
                             self.photoHeightDic[idxPath] = img.size.height
+                            Log.d(output: "idx(\(idxPath)) - \(self.photoHeightDic.description)")
                         })
                         .disposed(by: cell.disposeBag)
                 }
@@ -98,6 +105,7 @@ class SearchVC: ViewController, UITextFieldDelegate, UICollectionViewDelegate {
     }
     
     private func setupRxCollectionView() {
+        // Item 셀렉트 시에 동작 정의
         Observable
             .zip(collectionView.rx.itemSelected,
                  collectionView.rx.modelSelected(ImageInfo.self))
@@ -119,7 +127,7 @@ class SearchVC: ViewController, UITextFieldDelegate, UICollectionViewDelegate {
                 searchDetailVC.rx_collectionViewIdx
                     .subscribe(onNext: { [unowned self] idx in
                         
-                        // FIXME: 스크롤 제대로 작동하도록 할 것
+                        // FIXME: 스크롤 제대로 작동하도록 할 것(추가 검색이 있을 때 가끔 동작 안함)
                         self.collectionView.scrollToItem(at: IndexPath(item: idx, section: 0), at: .centeredVertically, animated: false)
                         
                         if idx == 0 { return }
@@ -165,11 +173,12 @@ class SearchVC: ViewController, UITextFieldDelegate, UICollectionViewDelegate {
     
 }
 
-
+// MARK: - DaumSearchCollectionViewLayoutDelegate 구현
 extension SearchVC: DaumSearchCollectionViewLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
         
+        Log.d(output: "idxPath(\(indexPath.description)) - \(self.photoHeightDic.description)")
         return photoHeightDic[indexPath.item] ?? CGFloat(collectionView.frame.size.height / 5)
     }
 }

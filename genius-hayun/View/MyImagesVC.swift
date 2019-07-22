@@ -10,13 +10,17 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+/// '내 보관함' 화면
 class MyImagesVC: ViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private var myImagesVM: MyImagesVM?
+    private var myImagesVM: MyImagesVM? // 뷰모델
     
-    var photoHeightDic: [Int : CGFloat] = [:]
+    /// collectionView의 각 셀의 이미지 높이에 대한 딕셔너리
+    ///
+    /// 각 셀의 IndexPath.Item을 Key로 갖고, 이미지 높이 값을 Value로 갖습니다.
+    private var photoHeightDic: [Int : CGFloat] = [:]
     
     deinit {
         Log.d(output: "소멸")
@@ -56,6 +60,7 @@ class MyImagesVC: ViewController {
     }
     
     private func setupRxCollectionView() {
+        // Item 셀렉트 시에 동작 정의
         Observable
             .zip(collectionView.rx.itemSelected,
                  collectionView.rx.modelSelected(ImageInfo.self))
