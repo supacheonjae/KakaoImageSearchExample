@@ -11,15 +11,12 @@ import Foundation
 // 저장 성공 또는 에러 여부 정의
 enum StoreError: CustomStringConvertible {
     case duplicate
-    case noSpace
     case unknown
     
     var description: String {
         switch self {
         case .duplicate:
             return "이미 보관함에 존재하는 이미지입니다."
-        case .noSpace:
-            return "저장 공간이 충분하지 않습니다."
         case .unknown:
             return "알 수 없는 오류가 발생하였습니다."
         }

@@ -46,7 +46,7 @@ extension RealmManager {
     /// - Parameter imageInfo: 이미지 정보 객체
     func storeImageInfo(imageInfo: MyImagesInfo) {
         
-        if imageInfo.thumbnailUrl.isEmpty || imageInfo.filePath.isEmpty {
+        if imageInfo.thumbnailUrl.isEmpty {
             return
         }
         

@@ -11,7 +11,7 @@ import ObjectMapper
 class ImageResp: Mappable {
     
     var is_end: Bool!
-    var documents: [ImageDocuments] = []
+    var documents: [ImageDocument] = []
     
     required init?(map: Map) { }
     
@@ -22,7 +22,7 @@ class ImageResp: Mappable {
     
 }
 
-class ImageDocuments: Mappable {
+class ImageDocument: Mappable {
     
     /// 썸네일 URL
     var thumbnail_url: String!

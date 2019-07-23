@@ -77,28 +77,32 @@ class SearchVC: ViewController, UITextFieldDelegate, UICollectionViewDelegate {
         
         searchVM?.rx_result
             .asDriver(onErrorJustReturn: [])
-            .drive(collectionView.rx.items(cellIdentifier: "ImageCell", cellType: ImageCell.self)) { [unowned self] (idxPath, imageInfo, cell) in
+            .drive(collectionView.rx.items(cellIdentifier: "ImageCell", cellType: ImageCell.self)) { (idxPath, imageInfoWithImageManager, cell) in
 
-                imageInfo.rx_image
+                let imageInfo = imageInfoWithImageManager.imageInfo
+                let imageManager = imageInfoWithImageManager.imageManager
+                
+                imageManager
+                    .loadImage(urlStr: imageInfo.thumbNailUrl)
                     .bind(to: cell.imgView.rx.image)
                     .disposed(by: cell.disposeBag)
                 
                 // 높이 값 저장
-                if let _ = self.photoHeightDic[idxPath] {
-                    
-                    imageInfo.rx_image
-                        .subscribe(onNext: { image in
-                            
-                            guard let img = image else {
-                                return
-                            }
-                            
-                            // 이미지가 nil 아닐 때만 높이 값 저장
-                            self.photoHeightDic[idxPath] = img.size.height
-                            Log.d(output: "idx(\(idxPath)) - \(self.photoHeightDic.description)")
-                        })
-                        .disposed(by: cell.disposeBag)
-                }
+                /*
+                imageManager
+                    .loadImage(urlStr: imageInfo.thumbNailUrl)
+                    .subscribe(onNext: { image in
+                        
+                        guard let img = image else {
+                            return
+                        }
+                        
+                        // 이미지가 nil 아닐 때만 높이 값 저장
+                        self.photoHeightDic[idxPath] = img.size.height
+                        Log.d(output: "idx(\(idxPath)) - \(self.photoHeightDic.description)")
+                    })
+                    .disposed(by: cell.disposeBag)
+                 */
             }
             .disposed(by: disposeBag)
         
@@ -106,10 +110,9 @@ class SearchVC: ViewController, UITextFieldDelegate, UICollectionViewDelegate {
     
     private func setupRxCollectionView() {
         // Item 셀렉트 시에 동작 정의
-        Observable
-            .zip(collectionView.rx.itemSelected,
-                 collectionView.rx.modelSelected(ImageInfo.self))
-            .subscribe(onNext: { [unowned self] idxPath, searchResult in
+        collectionView.rx.itemSelected
+            .debug()
+            .subscribe(onNext: { [unowned self] idxPath in
                 
                 self.collectionView.deselectItem(at: idxPath, animated: true)
                 
@@ -120,6 +123,7 @@ class SearchVC: ViewController, UITextFieldDelegate, UICollectionViewDelegate {
                 searchDetailVC.willMoveIdx = idxPath.item
                 
                 self.searchVM?.rx_result
+                    .map { $0.map { $0.imageInfo } }
                     .drive(searchDetailVC.rx_items)
                     .disposed(by: searchDetailVC.disposeBag)
                 

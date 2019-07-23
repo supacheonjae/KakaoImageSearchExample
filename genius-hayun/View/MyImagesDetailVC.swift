@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+/// 내 보관함 -> 상세보기 화면
 class MyImagesDetailVC: ViewController {
     
     @IBOutlet weak var btn_close: UIButton!

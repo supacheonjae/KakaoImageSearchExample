@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D2896CCAC7CE1B8812AF743 /* Pods_genius_hayunTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4EE392A98557636EAF8313 /* Pods_genius_hayunTests.framework */; };
 		112E6C09E77402E7A7D9EEE2 /* Pods_genius_hayunUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7513EBE178256D68A4B19CD7 /* Pods_genius_hayunUITests.framework */; };
+		8508BB5422E725D600E18B90 /* DetailPageItemVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8508BB5322E725D600E18B90 /* DetailPageItemVM.swift */; };
 		8515097A22E355B8001D129C /* VCLipResp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8515097922E355B8001D129C /* VCLipResp.swift */; };
 		8515097C22E35D6E001D129C /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8515097B22E35D6E001D129C /* RealmManager.swift */; };
 		8515097F22E35DFD001D129C /* MyImagesInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8515097E22E35DFD001D129C /* MyImagesInfo.swift */; };
@@ -45,7 +46,6 @@
 		85FEC9D622E445D900DEF0D1 /* SearchDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FEC9D522E445D900DEF0D1 /* SearchDetailVM.swift */; };
 		85FEC9D922E4474500DEF0D1 /* ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FEC9D822E4474500DEF0D1 /* ImageInfo.swift */; };
 		85FEC9DB22E44F8E00DEF0D1 /* RealmManager+MyImagesInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FEC9DA22E44F8E00DEF0D1 /* RealmManager+MyImagesInfo.swift */; };
-		85FEC9DD22E453EE00DEF0D1 /* DaumImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FEC9DC22E453EE00DEF0D1 /* DaumImageFileManager.swift */; };
 		85FEC9DF22E454FD00DEF0D1 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FEC9DE22E454FD00DEF0D1 /* Enum.swift */; };
 		F378C0139C7EAF913A840912 /* Pods_genius_hayun.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A1DD54337FE00383820CA2D /* Pods_genius_hayun.framework */; };
 /* End PBXBuildFile section */
@@ -73,6 +73,7 @@
 		55F55E1C1CA0F1646CDC11BA /* Pods-genius-hayun.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-genius-hayun.debug.xcconfig"; path = "Target Support Files/Pods-genius-hayun/Pods-genius-hayun.debug.xcconfig"; sourceTree = "<group>"; };
 		6717938EB18DFDCE55A66590 /* Pods-genius-hayun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-genius-hayun.release.xcconfig"; path = "Target Support Files/Pods-genius-hayun/Pods-genius-hayun.release.xcconfig"; sourceTree = "<group>"; };
 		7513EBE178256D68A4B19CD7 /* Pods_genius_hayunUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_genius_hayunUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8508BB5322E725D600E18B90 /* DetailPageItemVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPageItemVM.swift; sourceTree = "<group>"; };
 		8515097922E355B8001D129C /* VCLipResp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCLipResp.swift; sourceTree = "<group>"; };
 		8515097B22E35D6E001D129C /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		8515097E22E35DFD001D129C /* MyImagesInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImagesInfo.swift; sourceTree = "<group>"; };
@@ -115,7 +116,6 @@
 		85FEC9D522E445D900DEF0D1 /* SearchDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailVM.swift; sourceTree = "<group>"; };
 		85FEC9D822E4474500DEF0D1 /* ImageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfo.swift; sourceTree = "<group>"; };
 		85FEC9DA22E44F8E00DEF0D1 /* RealmManager+MyImagesInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealmManager+MyImagesInfo.swift"; sourceTree = "<group>"; };
-		85FEC9DC22E453EE00DEF0D1 /* DaumImageFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaumImageFileManager.swift; sourceTree = "<group>"; };
 		85FEC9DE22E454FD00DEF0D1 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		A20D67107F4F82553B36E390 /* Pods-genius-hayunUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-genius-hayunUITests.debug.xcconfig"; path = "Target Support Files/Pods-genius-hayunUITests/Pods-genius-hayunUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CBC313D4BE1A7D3239D85BFD /* Pods-genius-hayunTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-genius-hayunTests.release.xcconfig"; path = "Target Support Files/Pods-genius-hayunTests/Pods-genius-hayunTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -203,7 +203,7 @@
 			children = (
 				85EFADE922E2D1CA0012B583 /* Cell */,
 				85EFADF422E2D6A40012B583 /* Common */,
-				85F8B5D422E3FECE00E9D496 /* CustomView */,
+				85F8B5D422E3FECE00E9D496 /* CustomClass */,
 				85FEC9D722E4473300DEF0D1 /* Data */,
 				85EFAE0A22E2EAAF0012B583 /* Networking */,
 				85EFAE0422E2EA310012B583 /* Util */,
@@ -268,6 +268,7 @@
 		85EFADED22E2D26E0012B583 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				8508BB5322E725D600E18B90 /* DetailPageItemVM.swift */,
 				85169A1E22E4B3CF00151EA7 /* MyImageDetailVM.swift */,
 				85169A1C22E4A00200151EA7 /* MyImagesVM.swift */,
 				85FEC9D522E445D900DEF0D1 /* SearchDetailVM.swift */,
@@ -297,7 +298,6 @@
 			isa = PBXGroup;
 			children = (
 				859DAFAF22E3344D00B52343 /* Date */,
-				85EFAE0822E2EA6F0012B583 /* File */,
 				85EFAE0722E2EA600012B583 /* Image */,
 				85EFAE0922E2EA770012B583 /* Realm */,
 			);
@@ -310,14 +310,6 @@
 				85EFAE0522E2EA560012B583 /* ImageManager.swift */,
 			);
 			path = Image;
-			sourceTree = "<group>";
-		};
-		85EFAE0822E2EA6F0012B583 /* File */ = {
-			isa = PBXGroup;
-			children = (
-				85FEC9DC22E453EE00DEF0D1 /* DaumImageFileManager.swift */,
-			);
-			path = File;
 			sourceTree = "<group>";
 		};
 		85EFAE0922E2EA770012B583 /* Realm */ = {
@@ -339,12 +331,12 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		85F8B5D422E3FECE00E9D496 /* CustomView */ = {
+		85F8B5D422E3FECE00E9D496 /* CustomClass */ = {
 			isa = PBXGroup;
 			children = (
 				85F8B5D722E4007E00E9D496 /* DaumSearchCollectionViewLayout.swift */,
 			);
-			path = CustomView;
+			path = CustomClass;
 			sourceTree = "<group>";
 		};
 		85FEC9D722E4473300DEF0D1 /* Data */ = {
@@ -631,13 +623,13 @@
 				85FEC9D922E4474500DEF0D1 /* ImageInfo.swift in Sources */,
 				85169A1722E486C100151EA7 /* FlexibleButtonAlertVC.swift in Sources */,
 				85169A1D22E4A00200151EA7 /* MyImagesVM.swift in Sources */,
-				85FEC9DD22E453EE00DEF0D1 /* DaumImageFileManager.swift in Sources */,
 				85EFADF622E2D6D40012B583 /* Log.swift in Sources */,
 				85EFAE0622E2EA560012B583 /* ImageManager.swift in Sources */,
 				85FEC9D422E433BE00DEF0D1 /* DetailPageItemVC.swift in Sources */,
 				8515097A22E355B8001D129C /* VCLipResp.swift in Sources */,
 				85EEB41D22E1BF6B00AA8F06 /* ViewController.swift in Sources */,
 				85FEC9DB22E44F8E00DEF0D1 /* RealmManager+MyImagesInfo.swift in Sources */,
+				8508BB5422E725D600E18B90 /* DetailPageItemVM.swift in Sources */,
 				85169A1922E4873C00151EA7 /* FlexibleButtonAlertCell.swift in Sources */,
 				85169A1F22E4B3CF00151EA7 /* MyImageDetailVM.swift in Sources */,
 				85EFADF122E2D4770012B583 /* SearchVC.swift in Sources */,

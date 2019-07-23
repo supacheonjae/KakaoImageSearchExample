@@ -24,20 +24,24 @@ class MyImageDetailVM: NSObject {
     /// 결과 알림용 Subject
     private let rx_completion = PublishSubject<SendAlbumError?>()
     
+    private let imageManager: ImageManager
+    
+    
     deinit {
         Log.d(output: "소멸")
     }
     
     init(rx_sendAlbum: Observable<ImageInfo>) {
         self.rx_sendAlbum = rx_sendAlbum
+        self.imageManager = ImageManager(disposeBag: nil) // MyImagesVM에서 유지되는 imageManager가 캐시를 사용하고 있을 수 있으므로 매개변수를 nil로...
     }
     
     private func sendAlbum() -> Driver<SendAlbumError?> {
         
         rx_sendAlbum
             .debug()
-            .flatMapLatest { imageInfo -> Observable<UIImage?> in
-                return imageInfo.rx_image
+            .flatMapLatest { [unowned self] imageInfo -> Observable<UIImage?> in
+                return self.imageManager.loadImage(urlStr: imageInfo.thumbNailUrl)
             }
             .subscribe(onNext: { [unowned self] image in
                 

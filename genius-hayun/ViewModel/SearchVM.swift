@@ -13,10 +13,8 @@ import ObjectMapper
 
 /// 검색어 입력에 의하여 적절한 이미지 목록을 제공하는 ViewModel
 ///
-/// 이미지 검색 API와 동영상 검색 API를 활용하여 이미지 URL의 정보를 받은 후
-/// 이 정보를 토대로 이미지를 다운로드합니다.
-/// 그리고 해당 이미지 정보와 다운로드한 이미지 데이터(여기에서는 UIImage)를
-/// 조합한 목록들을 (rx_result)가 방출합니다.
+/// 이미지 검색 API와 동영상 검색 API를 활용하여 이미지 URL의 정보들을 방출합니다.
+/// 그리고 UIImage를 로드할 수 있도록 ImageManager도 같이 방출하여 줍니다.
 class SearchVM {
     
     /// 검색 API로 검색 요청 시 응답되는 값들을 SearchVM에서 필요한 정보들로 정의한 튜플
@@ -30,7 +28,7 @@ class SearchVM {
     /// 최초 검색 옵저버블
     ///
     /// 검색어를 기준으로 검색을 요청합니다.
-    /// 이 옵저버블이 발행될 때 기존에 검색된 이미지 목록은 사라집니다.
+    /// 이 옵저버블이 발행될 때 기존에 검색된 이미지 URL 목록은 사라집니다.
     private let rx_requestSearch: Observable<String>
     
     /// 현재 검색어로 더 검색을 요청할 때 발행되는 옵저버블
@@ -40,7 +38,7 @@ class SearchVM {
     
     // 이미지 API 요청과 응답 관련
     private let rx_requestImage = PublishSubject<(APIManager.API, APIManager.Parameters?)>() // 이미지 API 검색 요청
-    private let rx_responseImageList = PublishSubject<SearchResults>() // 이미지 API 검색 요청(rx_responseImageList)에 의한 응답 방출용
+    private let rx_responseImageList = PublishSubject<SearchResults>() // 이미지 API 검색 요청(rx_requestImage)에 의한 응답 방출용
     
     // 동영상 API 요청과 응답 관련
     private let rx_requestVCLip = PublishSubject<(APIManager.API, APIManager.Parameters?)>()
@@ -55,7 +53,7 @@ class SearchVM {
     private var vclipListPage = 1
     
     private let apiManager = APIManager()
-    private let imageManager = ImageManager()
+    private let imageManager: ImageManager
     
     
     deinit {
@@ -65,6 +63,7 @@ class SearchVM {
     init(rx_requestSearch: Observable<String>, rx_requestMore: Observable<Void>) {
         self.rx_requestSearch = rx_requestSearch
         self.rx_requestMore = rx_requestMore
+        self.imageManager = ImageManager(disposeBag: self.disposeBag)
         
         self.connectAPIManagerWithRx()
         self.setupRxSearch()
@@ -72,11 +71,14 @@ class SearchVM {
         self.setupRxMoreSearch()
     }
     
-    private func fetchData() -> Driver<[ImageInfo]> {
-        
+    private func fetchData() -> Driver<[(imageInfo: ImageInfo, imageManager: ImageManager)]> {
         return rx_totalList
+            .map { [unowned self] imageInfo in
+                return imageInfo.map { ($0, self.imageManager)}
+            }
             .asDriver(onErrorJustReturn: [])
     }
+    
     
     private func connectAPIManagerWithRx() {
         // 검색 요청(rx_reqeustImage) -> 응답 -> 검색 결과 방출
@@ -105,12 +107,11 @@ class SearchVM {
                     return
                 }
                 
-                let searchResults = imageResp.documents.compactMap { imageInfo -> ImageInfo in
+                let searchResults = imageResp.documents.compactMap { imageDocument -> ImageInfo in
                     
-                    let imageRef = ImageInfo(thumbNailUrl: imageInfo.thumbnail_url, date: imageInfo.datetime ?? Date())
-                    self.imageManager.loadImage(imageInfo: imageRef)
+                    let imageInfo = ImageInfo(thumbNailUrl: imageDocument.thumbnail_url, date: imageDocument.datetime ?? Date())
                     
-                    return imageRef
+                    return imageInfo
                 }
                 
                 self.rx_responseImageList.onNext(SearchResults(searchResults, imageResp.is_end))
@@ -143,12 +144,11 @@ class SearchVM {
                     return
                 }
                 
-                let searchResults = vclipResp.documents.compactMap { vclipInfo -> ImageInfo in
+                let searchResults = vclipResp.documents.compactMap { vclipDocument -> ImageInfo in
                     
-                    let imageRef = ImageInfo(thumbNailUrl: vclipInfo.thumbnail, date: vclipInfo.datetime ?? Date())
-                    self.imageManager.loadImage(imageInfo: imageRef)
+                    let imageInfo = ImageInfo(thumbNailUrl: vclipDocument.thumbnail, date: vclipDocument.datetime ?? Date())
                     
-                    return imageRef
+                    return imageInfo
                 }
                 
                 self.rx_responseVCLipList.onNext(SearchResults(searchResults, vclipResp.is_end))

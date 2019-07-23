@@ -100,7 +100,7 @@ class APIManager {
             })
             .disposed(by: disposeBag)
         
-        return resp.asObservable()
+        return resp
     }
     
 }

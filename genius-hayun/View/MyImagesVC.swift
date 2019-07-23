@@ -50,9 +50,13 @@ class MyImagesVC: ViewController {
         
         // 컬렉션 뷰 바인딩
         myImagesVM?.rx_images
-            .drive(collectionView.rx.items(cellIdentifier: "ImageCell", cellType: ImageCell.self)) { idx, imageInfo, cell in
+            .drive(collectionView.rx.items(cellIdentifier: "ImageCell", cellType: ImageCell.self)) { idx, imageInfoWithImageManager, cell in
                 
-                imageInfo.rx_image
+                let imageInfo = imageInfoWithImageManager.imageInfo
+                let imageManager = imageInfoWithImageManager.imageManager
+                
+                imageManager
+                    .loadImage(urlStr: imageInfo.thumbNailUrl)
                     .bind(to: cell.imgView.rx.image)
                     .disposed(by: cell.disposeBag)
             }
@@ -61,10 +65,8 @@ class MyImagesVC: ViewController {
     
     private func setupRxCollectionView() {
         // Item 셀렉트 시에 동작 정의
-        Observable
-            .zip(collectionView.rx.itemSelected,
-                 collectionView.rx.modelSelected(ImageInfo.self))
-            .subscribe(onNext: { [unowned self] idxPath, searchResult in
+        collectionView.rx.itemSelected
+            .subscribe(onNext: { [unowned self] idxPath in
                 
                 self.collectionView.deselectItem(at: idxPath, animated: true)
                 
@@ -75,6 +77,7 @@ class MyImagesVC: ViewController {
                 myImagesDetailVC.willMoveIdx = idxPath.item
                 
                 self.myImagesVM?.rx_images
+                    .map { $0.map { $0.imageInfo } }
                     .drive(myImagesDetailVC.rx_items)
                     .disposed(by: myImagesDetailVC.disposeBag)
                 

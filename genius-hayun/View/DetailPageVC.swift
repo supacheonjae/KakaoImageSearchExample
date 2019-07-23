@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+/// 상세보기 화면의 페이징 부분의 VC
 class DetailPageVC: UIPageViewController,  UIPageViewControllerDataSource {
     
     let disposeBag = DisposeBag()
@@ -54,10 +55,8 @@ class DetailPageVC: UIPageViewController,  UIPageViewControllerDataSource {
     // Rx 세팅
     private func setupRx() {
         // 이미지 리스트 구독
-        let comb_listAndPageIdx = Observable.combineLatest(rx_imageList, rx_currentPage)
         rx_imageList
-            .withLatestFrom(comb_listAndPageIdx)
-            .subscribe(onNext: { [unowned self] imageList, idx in
+            .subscribe(onNext: { [unowned self] imageList in
                 self.imageList = imageList
             })
             .disposed(by: disposeBag)
@@ -138,11 +137,11 @@ class DetailPageVC: UIPageViewController,  UIPageViewControllerDataSource {
             .disposed(by: DisposeBag())
     }
     
-    /// 특정 인덱스에 따라 NoticePageContentVC를 초기화 후 반환해주는 메서드
+    /// 특정 인덱스에 따라 DetailPageItemVC를 초기화 후 반환해주는 메서드
     ///
     /// - Parameter index: 페이지 인덱스
-    /// - Returns: 만약 NoticePageVC의 noticeList가 지정된 인덱스의 값을 가지고 있다면 NoticePageContentVC를 반환,
-    ///            noticeList에 존재하지 않는 인덱스라면 nil 반환
+    /// - Returns: 만약 DetailPageVC의 imageList가 지정된 인덱스의 값을 가지고 있다면 DetailPageItemVC를 반환,
+    ///            imageList에 존재하지 않는 인덱스라면 nil 반환
     private func viewControllerAtIndex(index: Int) -> DetailPageItemVC? {
         
         if index < 0 || index >= imageList.count {

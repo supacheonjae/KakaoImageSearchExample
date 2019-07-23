@@ -14,14 +14,12 @@ class MyImagesInfo: Object {
     @objc dynamic var thumbnailUrl = ""
     /// 저장 날짜
     @objc dynamic var storeDate = Date()
-    /// 파일 경로
-    @objc dynamic var filePath = ""
     
     override static func primaryKey() -> String? {
         return "thumbnailUrl"
     }
     
     override var description: String {
-        return "ImageCacheInfo {\(thumbnailUrl), \(storeDate), \(filePath)}"
+        return "ImageCacheInfo {\(thumbnailUrl), \(storeDate)}"
     }
 }

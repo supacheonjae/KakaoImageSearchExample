@@ -44,15 +44,9 @@ class SearchDetailVM {
                     return Observable.just(.duplicate)
                 }
                 
-                // 2. 디스크 스토리지 저장 시도
-                if let error = DaumImageFileManager.shared.storeImage(imageInfo: imageInfo) {
-                    return Observable.just(error)
-                }
-                
-                // 3. 저장 깔끔. DB에도 정보 저장..
+                // 2. DB에 정보 저장 완료!
                 let myImageInfo = MyImagesInfo()
                 myImageInfo.thumbnailUrl = imageInfo.thumbNailUrl
-                myImageInfo.filePath = imageInfo.fileName
                 
                 RealmManager.instance.storeImageInfo(imageInfo: myImageInfo)
                 

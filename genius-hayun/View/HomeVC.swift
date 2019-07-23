@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+/// 첫 화면(메뉴)
 class HomeVC: ViewController {
 
     @IBOutlet weak var tableView: UITableView!

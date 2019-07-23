@@ -16,30 +16,35 @@ import RxRealm
 /// ViewModel
 class MyImagesVM {
     
+    private let disposeBag = DisposeBag()
+    
     /// '내 보관함'에 저장되어 있는 이미지를 방출하는 Driver
     lazy var rx_images = self.fetchData()
     
+    private let imageManager: ImageManager
     
     deinit {
         Log.d(output: "소멸")
     }
     
-    private func fetchData() -> Driver<[ImageInfo]> {
+    init() {
+        self.imageManager = ImageManager(disposeBag: self.disposeBag)
+    }
+    
+    private func fetchData() -> Driver<[(imageInfo: ImageInfo, imageManager: ImageManager)]> {
         
         // 1. DB에서 이미지 정보를 가져옴
         let myImageInfos = RealmManager.instance.getAllImageInfos()
         
         return Observable.array(from: myImageInfos)
-            .map { myImageInfos -> [ImageInfo] in
+            .map { [unowned self] myImageInfos -> [(ImageInfo, ImageManager)] in
                 
-                return myImageInfos.map { myImagesInfo -> ImageInfo in
+                return myImageInfos.map { myImagesInfo -> (ImageInfo, ImageManager) in
                     
-                    // 2. DB에서 가져온 이미지 정보로 이미지 File을 찾아서 ImageInfo 객체를 생성해서 방출
-                    let image = DaumImageFileManager.shared.searchStoredImage(filePath: myImagesInfo.filePath)
+                    // 2. DB에서 가져온 이미지 정보로 이미지를 로드해서 ImageInfo 객체를 생성해서 방출
                     let imageInfo = ImageInfo(thumbNailUrl: myImagesInfo.thumbnailUrl, date: myImagesInfo.storeDate)
-                    imageInfo.rx_image.onNext(image)
                     
-                    return imageInfo
+                    return (imageInfo, self.imageManager)
                 }
             }
             .asDriver(onErrorJustReturn: [])

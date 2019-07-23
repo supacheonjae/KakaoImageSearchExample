@@ -11,7 +11,7 @@ import ObjectMapper
 class VCLipResp: Mappable {
     
     var is_end: Bool!
-    var documents: [VCLipDocuments] = []
+    var documents: [VCLipDocument] = []
     
     required init?(map: Map) { }
     
@@ -22,7 +22,7 @@ class VCLipResp: Mappable {
     
 }
 
-class VCLipDocuments: Mappable {
+class VCLipDocument: Mappable {
     
     /// 썸네일 URL
     var thumbnail: String!
