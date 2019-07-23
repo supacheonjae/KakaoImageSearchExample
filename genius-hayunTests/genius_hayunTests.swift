@@ -10,7 +10,7 @@ import XCTest
 @testable import genius_hayun
 
 class genius_hayunTests: XCTestCase {
-//    private var viewModel :SearchVM = SearchVM()
+    
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -30,12 +30,5 @@ class genius_hayunTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-//
-//    @Test
-//    fun testRequestSearch(){
-//    viewmodel.서브젝트.subscribeBy{
-//
-//    }
-//    }
 
 }

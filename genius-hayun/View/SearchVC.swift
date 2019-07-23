@@ -127,6 +127,10 @@ class SearchVC: ViewController, UITextFieldDelegate, UICollectionViewDelegate {
                     .drive(searchDetailVC.rx_items)
                     .disposed(by: searchDetailVC.disposeBag)
                 
+                self.present(searchDetailVC, animated: true) {
+                    self.collectionView.scrollToItem(at: idxPath, at: .centeredVertically, animated: false)
+                }
+                
                 // 스크롤 이동 바인딩
                 searchDetailVC.rx_collectionViewIdx
                     .subscribe(onNext: { [unowned self] idx in
@@ -146,8 +150,6 @@ class SearchVC: ViewController, UITextFieldDelegate, UICollectionViewDelegate {
                         }
                     })
                     .disposed(by: searchDetailVC.disposeBag)
-                
-                self.present(searchDetailVC, animated: true, completion: nil)
                 
             })
             .disposed(by: disposeBag)

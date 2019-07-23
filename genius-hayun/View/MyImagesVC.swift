@@ -81,6 +81,10 @@ class MyImagesVC: ViewController {
                     .drive(myImagesDetailVC.rx_items)
                     .disposed(by: myImagesDetailVC.disposeBag)
                 
+                self.present(myImagesDetailVC, animated: true) {
+                    self.collectionView.scrollToItem(at: idxPath, at: .centeredVertically, animated: false)
+                }
+                
                 // 스크롤 이동 바인딩
                 myImagesDetailVC.rx_collectionViewIdx
                     .subscribe(onNext: { [unowned self] idx in
@@ -89,7 +93,6 @@ class MyImagesVC: ViewController {
                     })
                     .disposed(by: myImagesDetailVC.disposeBag)
                 
-                self.present(myImagesDetailVC, animated: true, completion: nil)
                 
             })
             .disposed(by: disposeBag)
