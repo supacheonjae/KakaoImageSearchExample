@@ -82,27 +82,25 @@ class SearchVC: ViewController, UITextFieldDelegate, UICollectionViewDelegate {
                 let imageInfo = imageInfoWithImageManager.imageInfo
                 let imageManager = imageInfoWithImageManager.imageManager
                 
+                cell.imgView.image = nil
                 imageManager
                     .loadImage(urlStr: imageInfo.thumbNailUrl)
-                    .bind(to: cell.imgView.rx.image)
-                    .disposed(by: cell.disposeBag)
-                
-                // 높이 값 저장
-                /*
-                imageManager
-                    .loadImage(urlStr: imageInfo.thumbNailUrl)
-                    .subscribe(onNext: { image in
+                    .observeOn(MainScheduler.asyncInstance)
+                    .subscribe(onNext: { image, hasCache in
+                        cell.imgView.image = image
                         
-                        guard let img = image else {
+                        // 캐시에 없다면 페이드 인 효과!
+                        guard !hasCache else {
                             return
                         }
                         
-                        // 이미지가 nil 아닐 때만 높이 값 저장
-                        self.photoHeightDic[idxPath] = img.size.height
-                        Log.d(output: "idx(\(idxPath)) - \(self.photoHeightDic.description)")
+                        cell.imgView.alpha = 0
+                        UIView.animate(withDuration: 0.5, animations: {
+                            cell.imgView.alpha = 1
+                        })
+                        
                     })
                     .disposed(by: cell.disposeBag)
-                 */
             }
             .disposed(by: disposeBag)
         

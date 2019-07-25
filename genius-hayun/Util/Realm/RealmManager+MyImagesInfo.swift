@@ -40,8 +40,8 @@ extension RealmManager {
     
     /// 이미지 정보를 저장하는 메서드
     ///
-    /// 이미지를 저장소에 성공적으로 저장하였을 때만 호출해주세요!
-    /// thumbnailUrl와 filePath가 빈 문자열이면 정보 저장을 하지 않습니다.
+    /// 이미지를 내 보관함에 성공적으로 저장하였을 때만 호출해주세요!
+    /// thumbnailUrl가 빈 문자열이면 정보 저장을 하지 않습니다.
     ///
     /// - Parameter imageInfo: 이미지 정보 객체
     func storeImageInfo(imageInfo: MyImagesInfo) {

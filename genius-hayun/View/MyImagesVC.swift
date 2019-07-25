@@ -54,10 +54,25 @@ class MyImagesVC: ViewController {
                 
                 let imageInfo = imageInfoWithImageManager.imageInfo
                 let imageManager = imageInfoWithImageManager.imageManager
-                
+
+                cell.imgView.image = nil
                 imageManager
                     .loadImage(urlStr: imageInfo.thumbNailUrl)
-                    .bind(to: cell.imgView.rx.image)
+                    .observeOn(MainScheduler.asyncInstance)
+                    .subscribe(onNext: { image, hasCache in
+                        cell.imgView.image = image
+                        
+                        // 캐시에 없다면 페이드 인 효과!
+                        guard !hasCache else {
+                            return
+                        }
+                        
+                        cell.imgView.alpha = 0
+                        UIView.animate(withDuration: 0.5, animations: {
+                            cell.imgView.alpha = 1
+                        })
+                        
+                    })
                     .disposed(by: cell.disposeBag)
             }
             .disposed(by: disposeBag)

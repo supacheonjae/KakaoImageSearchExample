@@ -20,6 +20,6 @@ class MyImagesInfo: Object {
     }
     
     override var description: String {
-        return "ImageCacheInfo {\(thumbnailUrl), \(storeDate)}"
+        return "MyImagesInfo {\(thumbnailUrl), \(storeDate)}"
     }
 }

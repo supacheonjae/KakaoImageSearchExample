@@ -11,7 +11,7 @@ import RxSwift
 
 /// 이미지를 관리하고 로드하는 이미지 관리 클래스
 ///
-/// URL 기반의 퍼사드 패턴의 싱글톤 이미지 관리 클래스입니다.
+/// URL 기반의 퍼사드 패턴의 이미지 관리 클래스입니다.
 /// 캐시에 존재하는 이미지를 로드할 경우 캐시 이미지를 사용합니다.
 class ImageManager {
     
@@ -19,8 +19,6 @@ class ImageManager {
     ///
     /// 키 값으로 URL 문자열을 사용합니다.
     private static let memoryCache = NSCache<NSString, UIImage>()
-    
-    private let disposeBag = DisposeBag()
     
     
     deinit {
@@ -49,7 +47,7 @@ class ImageManager {
     ///
     /// - Parameter urlStr: 이미지를 불러올 URL
     /// - Returns: urlStr로 이미지 요청 시 결과에 응답하는 옵저버블
-    func loadImage(urlStr: String) -> Observable<UIImage?> {
+    func loadImage(urlStr: String) -> Observable<(image: UIImage?, hasCache: Bool)> {
         
         guard let mUrl = URL(string: urlStr) else {
             return Observable.empty()
@@ -69,11 +67,11 @@ class ImageManager {
                 pub_image.onNext(downloadedImg)
             }
             
-            return pub_image
+            return pub_image.map { ($0, false) }
         }
         
         // 캐시에 있는 이미지를 사용합니다!!
-        return Observable.just(image)
+        return Observable.just((image, true))
     }
     
     /// URL을 통하여 UIImage 로드를 시도

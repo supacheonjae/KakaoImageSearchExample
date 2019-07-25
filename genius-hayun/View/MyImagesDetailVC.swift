@@ -49,8 +49,7 @@ class MyImagesDetailVC: ViewController {
     private func setupRx() {
         // 닫기 버튼
         btn_close.rx.tap
-            .withLatestFrom(rx_currentPage)
-            .subscribe(onNext: { [unowned self] currentIdx in
+            .subscribe(onNext: { [unowned self] _ in
                 self.dismiss(animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
@@ -59,15 +58,12 @@ class MyImagesDetailVC: ViewController {
         let comb_itemsAndIndex = Observable.combineLatest(rx_items, rx_currentPage)
         btn_storeImage.rx.tap
             .withLatestFrom(comb_itemsAndIndex)
-            .subscribe(onNext: { [unowned self] items, currentIdx in
-                self.rx_sendAlbum.onNext(items[currentIdx])
-            })
+            .map { $0[$1] }
+            .bind(to: rx_sendAlbum)
             .disposed(by: disposeBag)
         
         rx_currentPage
-            .subscribe(onNext: { [unowned self] currentIdx in
-                self.rx_collectionViewIdx.onNext(currentIdx)
-            })
+            .bind(to: rx_collectionViewIdx)
             .disposed(by: disposeBag)
     }
     
@@ -95,20 +91,20 @@ class MyImagesDetailVC: ViewController {
         if let pageVC = segue.destination as? DetailPageVC {
             
             // DetailPageVC에게 이미지들 옵저버블 제공
-            rx_items
+            self.rx_items
                 .asDriver(onErrorJustReturn: [])
                 .drive(pageVC.rx_imageList)
                 .disposed(by: pageVC.disposeBag)
             
             // 이전 페이지 버튼 터치 이벤트를 알려줌
-            btn_prePage.rx.tap
+            self.btn_prePage.rx.tap
                 .subscribe(onNext: { _ in
                     pageVC.rx_prev.onNext(())
                 })
                 .disposed(by: pageVC.disposeBag)
             
             // 다음 페이지 버튼 터치 이벤트를 알려줌
-            btn_nextPage.rx.tap
+            self.btn_nextPage.rx.tap
                 .subscribe(onNext: { _ in
                     pageVC.rx_next.onNext(())
                 })
@@ -120,7 +116,7 @@ class MyImagesDetailVC: ViewController {
                 .disposed(by: pageVC.disposeBag)
             
             // 페이지 이동
-            pageVC.rx_willMovePageIndex.onNext(willMoveIdx)
+            pageVC.rx_willMovePageIndex.onNext(self.willMoveIdx)
         }
     }
 

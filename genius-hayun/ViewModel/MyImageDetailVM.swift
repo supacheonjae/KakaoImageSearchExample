@@ -40,9 +40,10 @@ class MyImageDetailVM: NSObject {
         
         rx_sendAlbum
             .debug()
-            .flatMapLatest { [unowned self] imageInfo -> Observable<UIImage?> in
+            .flatMapLatest { [unowned self] imageInfo -> Observable<(image: UIImage?, hasCache: Bool)> in
                 return self.imageManager.loadImage(urlStr: imageInfo.thumbNailUrl)
             }
+            .map { $0.image }
             .subscribe(onNext: { [unowned self] image in
                 
                 // UIImage가 잘못됨

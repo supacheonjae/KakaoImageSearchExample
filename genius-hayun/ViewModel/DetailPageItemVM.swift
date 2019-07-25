@@ -33,9 +33,10 @@ class DetailPageItemVM {
     private func loadImage() -> Driver<UIImage?> {
         
         return rx_imageURL
-            .flatMapLatest { [unowned self] imageInfo -> Observable<UIImage?> in
+            .flatMapLatest { [unowned self] imageInfo -> Observable<(image: UIImage?, hasCache: Bool)> in
                 return self.imageManager.loadImage(urlStr: imageInfo.thumbNailUrl)
             }
+            .map { $0.image }
             .asDriver(onErrorJustReturn: nil)
     }
     
