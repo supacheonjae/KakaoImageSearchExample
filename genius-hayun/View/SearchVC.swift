@@ -86,17 +86,17 @@ class SearchVC: ViewController, UITextFieldDelegate, UICollectionViewDelegate {
                 imageManager
                     .loadImage(urlStr: imageInfo.thumbNailUrl)
                     .observeOn(MainScheduler.asyncInstance)
-                    .subscribe(onNext: { image, hasCache in
-                        cell.imgView.image = image
+                    .subscribe(onNext: { [weak cell] image, hasCache in
+                        cell?.imgView.image = image
                         
                         // 캐시에 없다면 페이드 인 효과!
                         guard !hasCache else {
                             return
                         }
                         
-                        cell.imgView.alpha = 0
+                        cell?.imgView.alpha = 0
                         UIView.animate(withDuration: 0.5, animations: {
-                            cell.imgView.alpha = 1
+                            cell?.imgView.alpha = 1
                         })
                         
                     })
